@@ -1,85 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <style>
-        ul li.active{
-            color: green;
-        }
-    </style>
+    <meta charset=="utf-8">
+
+
+<!--图片上传 begin-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
+
+    <link rel="stylesheet" href="js/dropzone-min/bootStyle.css">
+    <script>
+        Dropzone.autoDiscover = false;
+    </script>
+<!--图片上传 end-->
 </head>
-
 <body>
-
-<div class="rowName">
-    <ul>
-        <li class="active">全部aaa</li>
-        <li>aaa1</li>
-        <li>aaa2</li>
-        <li>aaa3</li>
-        <li>aaa4</li>
-        <li>aaa5</li>
-    </ul>
-</div>
-
+    <div id="actions" class="row">
+        <div class="col-lg-7">
+            <!-- The fileinput-button span is used to style the file input field as button -->
+            <span class="btn btn-success fileinput-button">
+                <i class="glyphicon glyphicon-plus"></i>
+                <span>增加图片</span>
+            </span>
+            <button type="button" class="btn btn-primary start">
+                <i class="glyphicon glyphicon-upload"></i>
+                <span>开始上传</span>
+            </button>
+            <button type="button" class="btn btn-warning cancel">
+                <i class="glyphicon glyphicon-ban-circle"></i>
+                <span>取消上传</span>
+            </button>
+        </div>
+    </div>
+    <div class="table table-striped files" id="previews">
+        <div id="template" class="file-row">
+            <!-- This is used as the file preview template -->
+            <div>
+                <span class="preview"><img data-dz-thumbnail /></span>
+            </div>
+            <div>
+                <p class="name" data-dz-name></p>
+                <strong class="error text-danger" data-dz-errormessage></strong>
+            </div>
+            <div>
+                <p class="size" data-dz-size></p>
+                <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                    <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+                </div>
+            </div>
+            <div>
+                <button class="btn btn-primary start">
+                    <i class="glyphicon glyphicon-upload"></i>
+                    <span>上传</span>
+                </button>
+                <button data-dz-remove class="btn btn-warning cancel">
+                    <i class="glyphicon glyphicon-ban-circle"></i>
+                    <span>取消</span>
+                </button>
+                <button data-dz-remove class="btn btn-danger delete">
+                    <i class="glyphicon glyphicon-trash"></i>
+                    <span>删除</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="js/dropzone-min/dropzone.min.js"></script>
+    <script src="js/dropzone-min/bootStyle.js"></script>
 </body>
-<script src="js/jquery-3.2.1.js"></script>
-<script>
-    filter("rowName");
-
-    function filter(rowName) {
-        var liArr = $("."+rowName+" ul li");
-        var choose = false;
-        var total = liArr.length - 1;
-        var num = 0;
-
-        // console.log(liArr);
-        // //选中【不限】时，其他不用高亮
-        $(liArr[0]).click(function () {
-            $(this).addClass("active");
-            for(var i = 1; i < liArr.length;i++){
-                $(liArr[i]).removeClass("active");
-            }
-        });
-
-        // 点击除【不限】之外的选项时高亮，全高亮时改为全部不高亮，【不限】选项高亮
-        //为 不限 后面的 选项进行单独绑定点击事件
-        for(var i = 1; i < liArr.length;i++) {
-            console.log(liArr[i]);
-            $(liArr[i]).click(function () {
-                //每次点击重置 choose 的值，且
-                choose = true;
-                num = 0;
-
-                //点击后，高亮显示
-                if($(this).hasClass("active")){
-                    $(this).removeClass("active");
-                }else{
-                    $(this).addClass("active");
-                }
-
-                //每次点击，都遍历一次确定是否都选中了
-                for (var j = 1; j < liArr.length; j++) {
-                    if($(liArr[j]).attr("class") === undefined) {
-                        choose = false;
-                        num++;
-                        if(num === total ){
-                            choose = true;
-                        }
-                    }
-                }
-
-                //对  choose 进行判断
-                if(choose){
-                    $("."+rowName+" ul li").removeClass("active");
-                    $(liArr[0]).addClass("active");
-                }else{
-                    $(liArr[0]).removeClass("active");
-                }
-            });
-        }
-    }
-    function callback() {
-        alert(1);
-    }
-</script>
 </html>
