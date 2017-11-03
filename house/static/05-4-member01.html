@@ -25,7 +25,6 @@
 </head>
 <body>
 <!--通用top begin -->
-
 <!--header begin-->
 <header class="wrap">
     <div class="banxin welcome clearfix">
@@ -45,7 +44,6 @@
     </div>
 </header>
 <!--header end-->
-
 <!--nav begin-->
 <nav class="wrap">
     <div class="banxin nav  clearfix">
@@ -59,7 +57,7 @@
         </ul>
         <div class="hot-line fr clearfix">
             <img src="images/QRcode.png" alt="公众号二维码">
-            <p align="center">关注公众号</p>
+            <p align="center">联系我们</p>
         </div>
     </div>
 </nav>
@@ -316,11 +314,35 @@
 <!--footer end-->
 <script src="js/jquery-3.2.1.js"></script>
 <script src="js/nav.js"></script>
-<script src="js/05-4-member.js"></script>
 <script src="js/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
 <script src="js/dropzone-min/dropzone.min.js"></script>
 <script src="js/dropzone-min/bootStyle.js"></script>
 <script>
+    // 确认修改
+    document.querySelector(".modify").onclick = function () {
+        document.querySelector(".modify-success span").innerHTML = getNowFormatDate();
+        document.querySelector(".modify-success").style.display = "block";
+    };
+
+    function getNowFormatDate() {
+        var date = new Date();
+        var seperator1 = "-";
+        var seperator2 = ":";
+        var month = date.getMonth() + 1;
+        var strDate = date.getDate();
+        if (month >= 1 && month <= 9) {
+            month = "0" + month;
+        }
+        if (strDate >= 0 && strDate <= 9) {
+            strDate = "0" + strDate;
+        }
+        var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate
+            + " " + date.getHours() + seperator2 + date.getMinutes()
+            + seperator2 + date.getSeconds();
+        return currentdate;
+    }
+
+    //返回顶部
     $(".backToTop").click(function () {
         console.log(11);
         scrollTo(0,0);
