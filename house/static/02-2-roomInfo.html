@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/02-2-roomInfo.css">
     <link rel="stylesheet" href="css/swiper.min.css">
+    <link type="text/css" rel="stylesheet" href="js/jquery-ui-1.12.1.custom/jquery-ui.css"/>
+    <link type="text/css" rel="stylesheet" href="js/jquery-ui-1.12.1.custom/jquery-ui.structure.css"/>
+    <link type="text/css" rel="stylesheet" href="js/jquery-ui-1.12.1.custom/jquery-ui.theme.css"/>
     <script src="//at.alicdn.com/t/font_au3ce8gckh4lhaor.js"></script>
 </head>
 <body>
@@ -75,7 +78,8 @@
             <p><svg class="icon" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-shijian"></use></svg> <span>2017-8-9 19:00</span> &nbsp更新</p>
             <p><svg class="icon" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-1-part"></use></svg> <span>合租</span></p>
             <p class="payment"><span class="orange">￥600/月</span>&nbsp&nbsp&nbsp&nbsp<span class="how">押一付一</span></p>
-            <p class="phoneNum orange"><button>预 约 看 房</button></p>
+            <!-- <p class="phoneNum orange"><button>预 约 看 房</button></p> -->
+            <p class="getContact"><input type="text" id="select_date" readonly="readonly" placeholder="预约看房" /></p>
         </div>
     </div>
 </div>
@@ -307,29 +311,10 @@
 
 <script src="js/jquery-3.2.1.js"></script>
 <script src="js/nav.js"></script>
-<!-- Swiper JS -->
+<script src="js/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
 <script src="js/swiper.min.js"></script>
+<script src="js/02-2-roomInfo.js"></script>
 <!-- Initialize Swiper -->
-<script>
-    //    banner autoplay
-    var swiper = new Swiper('.swiper-container', {
-        pagination: '.swiper-pagination',
-        paginationType: 'fraction',
-        nextButton: '.swiper-button-next',
-        prevButton: '.swiper-button-prev',
-        paginationClickable: true,
-//        spaceBetween: 500,
-        centeredSlides: true,
-        autoplay: 2000,
-        autoplayDisableOnInteraction: false,
-        effect: 'fade',
-        loop: true
-    });
 
-    $(".backToTop").click(function () {
-        console.log(11);
-        scrollTo(0,0);
-    });
-</script>
 </body>
 </html>
