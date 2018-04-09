@@ -303,8 +303,9 @@
             console.log(liArr[i]);
             $(liArr[i]).click(function () {
                 //每次点击重置 choose 的值，且
-                choose = true;
-                num = 0;
+                // choose = true;
+                // num = 0;
+                liArr.removeClass("active");
 
                 //点击后，高亮显示
                 if($(this).hasClass("active")){
@@ -313,24 +314,24 @@
                     $(this).addClass("active");
                 }
 
-                //每次点击，都遍历一次确定是否都选中了
-                for (var j = 2; j < liArr.length; j++) {
-                    if($(liArr[j]).attr("class") === undefined) {
-                        choose = false;
-                        num++;
-                        if(num === total ){
-                            choose = true;
-                        }
-                    }
-                }
+                // //每次点击，都遍历一次确定是否都选中了
+                // for (var j = 2; j < liArr.length; j++) {
+                //     if($(liArr[j]).attr("class") === undefined) {
+                //         choose = false;
+                //         num++;
+                //         if(num === total ){
+                //             choose = true;
+                //         }
+                //     }
+                // }
 
-                //对  choose 进行判断
-                if(choose){
-                    $("."+rowName+" ul li").removeClass("active");
-                    $(liArr[1]).addClass("active");
-                }else{
-                    $(liArr[1]).removeClass("active");
-                }
+                // //对  choose 进行判断
+                // if(choose){
+                //     $("."+rowName+" ul li").removeClass("active");
+                //     $(liArr[1]).addClass("active");
+                // }else{
+                //     $(liArr[1]).removeClass("active");
+                // }
             });
         }
 
